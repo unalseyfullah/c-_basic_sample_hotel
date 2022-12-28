@@ -1,0 +1,129 @@
+//
+//  main.cpp
+//  Hotel
+//
+//  Created by Ahmet Seyfullah Ünal on 28.12.22.
+//
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int quantity {};
+    int choice {};
+
+    // Quantity
+    int quantityRooms = 0, quantityFoods = 0, quantityActivities = 0;
+    // Items sold
+    int soldRooms = 0, soldFoods = 0, soldActivities = 0;
+    // Per price of items
+    int priceRooms = 150, priceFoods = 30, priceActivities = 50;
+    // Total price of items
+    int totalRooms = 0, totalFoods = 0, totalActivities = 0;
+    
+    cout << "Quantity of items we have" << endl;
+    cout << "Rooms available: ";
+    cin >> quantityRooms;
+    cout << endl;
+    cout << "Quantity of foods: ";
+    cin >> quantityFoods;
+    cout << endl;
+    cout << "Quantity of activities: ";
+    cin >> quantityActivities;
+    cout << endl;
+
+    m:
+    cout << "Please select from the menu options " << endl;
+    cout << "1) Rooms" << endl;
+    cout << "2) Foods" << endl;
+    cout << "3) Activities" << endl;
+    cout << "4) Information regarding sales and collection" << endl;
+    cout << "5) Exit" << endl;
+    
+    cout << "Please enter your choice!" << endl;
+    cin >> choice;
+    
+    switch (choice) {
+        case 1:
+            cout << "Please enter the number of rooms you want: ";
+            cin >> quantity;
+            cout << endl;
+            
+            if (quantityRooms - soldRooms >= quantity)
+            {
+                soldRooms = soldRooms + quantity;
+                totalRooms = totalRooms + (quantity * priceRooms);
+                cout << quantity << " room/rooms have been alloted to you!" << endl;
+            }
+            else
+            {
+                cout << "Only " << quantityRooms - soldRooms << " room/rooms remaining in hotel!" << endl;
+            }
+            break;
+
+        case 2:
+            cout << "Please enter the number of foods you want: ";
+            cin >> quantity;
+            cout << endl;
+
+            if (quantityFoods - soldFoods >= quantity)
+            {
+                soldFoods = soldFoods + quantity;
+                totalFoods = totalFoods + (quantity * priceFoods);
+                cout << quantity << " food/foods is/are order!" << endl;
+            }
+            else
+            {
+                cout << "Only " << quantityFoods - soldFoods << " food/foods remaining in hotel!" << endl;
+            }
+            break;
+
+        case 3:
+            cout << "Please enter the number of activities you want: ";
+            cin >> quantity;
+            cout << endl;
+
+            if (quantityActivities - soldActivities >= quantity)
+            {
+                soldActivities = soldActivities + quantity;
+                totalActivities = totalActivities + (quantity * priceActivities);
+                cout << quantity << " activity/activities have been alloted to you!" << endl;
+            }
+            else
+            {
+                cout << "Only " << quantityActivities - soldActivities << " activity/activities remaining in hotel!" << endl;
+            }
+            break;
+            
+        case 4:
+            cout << "Details of sales and collection " << endl;
+
+            cout << "Number of rooms we had : " << quantityRooms << endl;
+            cout << "Number of rooms we gave for rent : " << soldRooms << endl;
+            cout << "Remaining rooms : " << quantityRooms - soldRooms << endl;
+            cout << "Total rooms collection for the day : " << totalRooms << endl;
+
+            cout << "Number of foods we had : " << quantityFoods << endl;
+            cout << "Number of foods we sold : " << soldFoods << endl;
+            cout << "Remaining foods : " << quantityFoods - soldFoods << endl;
+            cout << "Total foods collection for the day : " << totalFoods << endl;
+
+            cout << "Number of activities we had : " << quantityActivities << endl;
+            cout << "Number of activities we gave for rent : " << soldActivities << endl;
+            cout << "Remaining activities : " << quantityActivities - soldActivities << endl;
+            cout << "Total activities collection for the day : " << totalActivities << endl;
+            
+            cout << "Total collection for day : " << totalRooms + totalFoods + totalActivities << endl;
+            break;
+            
+        case 5:
+            exit(0);
+
+        default:
+            cout << "Please select the numbers mentioned above!" << endl;
+            break;
+    }
+    goto m;
+
+    return 0;
+}
